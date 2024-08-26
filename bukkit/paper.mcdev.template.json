@@ -81,6 +81,20 @@
       }
     },
     {
+      "name": "LANG_CLASS",
+      "type": "class_fqn",
+      "derives": {
+        "parents": ["BUILD_COORDS", "config/Lang"]
+      }
+    },
+    {
+      "name": "SETTINGS_CLASS",
+      "type": "class_fqn",
+      "derives": {
+        "parents": ["BUILD_COORDS", "config/Settings"]
+      }
+    },
+    {
       "name": "USE_PAPER_MANIFEST",
       "type": "boolean",
       "default": true
@@ -212,6 +226,14 @@
       "destination": "src/main/kotlin/${MAIN_CLASS.path}.kt",
       "condition": "$LANGUAGE=='Kotlin'",
       "openInEditor": true
+    },
+    {
+      "template": "Lang.java.fg",
+      "destination": "src/main/java/${LANG_CLASS.path}.java"
+    },
+    {
+      "template": "Settings.java.fg",
+      "destination": "src/main/java/${SETTINGS_CLASS.path}.java"
     }
   ],
   "finalizers": [

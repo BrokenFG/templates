@@ -117,5 +117,17 @@
       <version>${kotlin.version}</version>
     </dependency>
 #end
+    <dependency>
+      <groupId>ru.brfg</groupId>
+      <artifactId>api</artifactId>
+      <version>1.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>ru.brfg</groupId>
+      <artifactId>base</artifactId>
+      <version>1.0</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
 </project>

@@ -1,0 +1,47 @@
+package ${LANG_CLASS.packageName};
+
+import ru.brfg.api.bukkit.config.Config;
+
+public enum Lang {
+
+    PREFIX("&9${PLUGIN_NAME}&f"),
+    ;
+
+    private String defaultValue;
+    private static Config config;
+
+    Lang(String defaultValue) {
+        this.defaultValue = defaultValue;
+    }
+
+    public String getPath() {
+        return this.name().replace("_", ".");
+    }
+
+    public String getDefaultValue() {
+        return this.defaultValue;
+    }
+
+    @Override
+    public String toString() {
+        return Lang.config.getText(this.getPath());
+    }
+
+    public String toMsg() {
+        return Lang.config.getText(Lang.PREFIX.getPath()) + Lang.config.getText(this.getPath());
+    }
+
+    public static void setConfig(final Config config) {
+        Lang.config = config;
+        load();
+    }
+
+    private static void load() {
+        for (final Lang lang : values()) {
+            if (Lang.config.getString(lang.getPath()) == null) {
+                Lang.config.set(lang.getPath(), lang.getDefaultValue());
+            }
+        }
+        Lang.config.save();
+    }
+}

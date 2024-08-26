@@ -1,17 +1,26 @@
 package ${MAIN_CLASS.packageName};
 
+import lombok.Getter;
+import ru.brfg.api.shared.FGPlugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class ${MAIN_CLASS.className} extends JavaPlugin {
+public final class ${MAIN_CLASS.className} extends JavaPlugin implements FGPlugin {
+
+    @Getter
+    private static ${MAIN_CLASS.className} instance;
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
-
+        instance = this;
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+    }
+
+    @Override
+    public String getPackage() {
+        return getClass().getPackageName();
     }
 }
